@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Switch, Route, NavLink } from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import FeedPage from "./pages/FeedPage";
+import DetailsPage from "./pages/DetailsPage";
+
+const NavBar = () => {
+  return (
+    <div style={{ marginBottom: 30 }}>
+      <NavLink to="/" style={{ marginRight: 30 }}>
+        {" "}
+        Home{" "}
+      </NavLink>
+      <NavLink to="/feed">Feed</NavLink>
+    </div>
+  );
+};
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <Switch>
+        <Route path="/details" component={DetailsPage} />
+        <Route path="/feed" component={FeedPage} />
+        <Route path="/" component={Homepage} />
+      </Switch>
     </div>
   );
 }
