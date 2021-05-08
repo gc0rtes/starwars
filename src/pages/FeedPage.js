@@ -1,23 +1,46 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import PlanetsCard from "../components/PlanetsCard";
 
 const FeedPage = () => {
+  const [planets, setPlanets] = useState([]);
+  const [species, setSpecies] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://www.swapi.tech/api/planets");
-        console.log("response:", response);
+        const planetsResponse = await axios.get(
+          "https://www.swapi.tech/api/planets"
+        );
+        console.log("Planets response:", planetsResponse.data.results);
+        setPlanets(planetsResponse.data.results); // send results do useState why?
+      } catch (e) {
+        console.log(e.message);
+      }
+      try {
+        const speciesResponse = await axios.get(
+          "https://www.swapi.tech/api/species"
+        );
+        console.log("Species response:", speciesResponse.data.results);
+        setSpecies(speciesResponse.data.results); // send results do useState why?
       } catch (e) {
         console.log(e.message);
       }
     };
     fetchData();
-  }, []);
+  }, []); //what is used for the second parameter of useEffect?
 
   return (
     <div>
       <div> Welcome to my Star Wars Feed Page</div>
-      <h3>Planets</h3>
+      <h3>Here's a lovely list of Star Wars Planets</h3>
+      {planets.map((article) => (
+        <PlanetsCard key={article.uid} id={article.uid} name={article.name} />
+      ))}
+      <h3>And a another graceful list of Star Wars Species </h3>
+      {species.map((article) => (
+        <PlanetsCard key={article.uid} id={article.uid} name={article.name} />
+      ))}
     </div>
   );
 };
