@@ -4,7 +4,7 @@
       <p>Climate (https://www.swapi.tech/api/planets/1)</p>
       <p>Terrain (https://www.swapi.tech/api/planets/1)</p> */
 
-export default function PlanetsCard(props) {
+export default function MainCard(props) {
   return (
     <div className="Article">
       <h5>Name: {props.name} </h5>
