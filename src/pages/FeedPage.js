@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import MainCard from "../components/MainCard";
+import PlanetCard from "../components/PlanetCard";
+import SpeciesCard from "../components/SpeciesCard";
 
 const FeedPage = () => {
   const [planets, setPlanets] = useState([]);
@@ -14,6 +15,7 @@ const FeedPage = () => {
         );
         console.log("Planets response:", planetsResponse.data.results);
         setPlanets(planetsResponse.data.results);
+
         const speciesResponse = await axios.get(
           "https://www.swapi.tech/api/species"
         );
@@ -28,14 +30,20 @@ const FeedPage = () => {
 
   return (
     <div>
-      <div> Welcome to my Star Wars Feed Page</div>
+      <h1>Star Wars Feed Page</h1>
+
       <h3>Here's a lovely list of Star Wars Planets</h3>
-      {planets.map((article) => (
-        <MainCard key={article.uid} id={article.uid} name={article.name} />
+      {planets.map((planet) => (
+        <PlanetCard key={planet.uid} planetId={planet.uid} name={planet.name} />
       ))}
+
       <h3>And a another graceful list of Star Wars Species </h3>
-      {species.map((article) => (
-        <MainCard key={article.uid} id={article.uid} name={article.name} />
+      {species.map((specie) => (
+        <SpeciesCard
+          key={specie.uid}
+          specieId={specie.uid}
+          name={specie.name}
+        />
       ))}
     </div>
   );

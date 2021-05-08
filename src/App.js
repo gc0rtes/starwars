@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <NavBar />
       <Switch>
-        <Route path="/details" component={DetailsPage} />
+        <Route path="/details/:planetId" component={DetailsPage} />
         <Route path="/feed" component={FeedPage} />
         <Route path="/" component={Homepage} />
       </Switch>
