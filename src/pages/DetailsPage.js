@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const DetailsPage = () => {
-  const [planetDetail, setplanetDetail] = useState(null);
+  const [planetDetail, setplanetDetail] = useState(null); // set null to handle  crash loading data
   const params = useParams();
 
   console.log("What is my router param?", params);
@@ -24,8 +24,9 @@ const DetailsPage = () => {
   }, []);
 
   // An if statement to handle crash loading data
-  //If planetDetail is false show loading
+  // If the state of planetDetail is false (null) show loading
   if (!planetDetail) {
+    console.log("state of planetDetail is:", planetDetail);
     return <div>Loading....</div>;
   }
 

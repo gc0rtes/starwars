@@ -7,11 +7,29 @@ import DetailsPage from "./pages/DetailsPage";
 const NavBar = () => {
   return (
     <div style={{ marginBottom: 30 }}>
-      <NavLink to="/" style={{ marginRight: 30 }}>
+      <NavLink
+        exact
+        to="/"
+        activeStyle={{
+          fontWeight: "bold",
+          color: "red",
+        }}
+        style={{ marginRight: 30 }}
+      >
         {" "}
         Home{" "}
       </NavLink>
-      <NavLink to="/feed">Feed</NavLink>
+
+      <NavLink
+        exact
+        to="/feed"
+        activeStyle={{
+          fontWeight: "bold",
+          color: "red",
+        }}
+      >
+        Feed
+      </NavLink>
     </div>
   );
 };

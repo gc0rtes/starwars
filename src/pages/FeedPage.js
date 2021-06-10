@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import PlanetCard from "../components/PlanetCard";
 import SpeciesCard from "../components/SpeciesCard";
+import "./FeedPage.css";
 
 const FeedPage = () => {
   const [planets, setPlanets] = useState([]);
@@ -31,20 +32,27 @@ const FeedPage = () => {
   return (
     <div>
       <h1>Star Wars Feed Page</h1>
-
       <h3>Here's a lovely list of Star Wars Planets</h3>
-      {planets.map((planet) => (
-        <PlanetCard key={planet.uid} planetId={planet.uid} name={planet.name} />
-      ))}
+      <div className="map-container">
+        {planets.map((planet) => (
+          <PlanetCard
+            key={planet.uid}
+            planetId={planet.uid}
+            name={planet.name}
+          />
+        ))}
+      </div>
 
       <h3>And a another graceful list of Star Wars Species </h3>
-      {species.map((specie) => (
-        <SpeciesCard
-          key={specie.uid}
-          specieId={specie.uid}
-          name={specie.name}
-        />
-      ))}
+      <div className="map-container">
+        {species.map((specie) => (
+          <SpeciesCard
+            key={specie.uid}
+            specieId={specie.uid}
+            name={specie.name}
+          />
+        ))}
+      </div>
     </div>
   );
 };
